@@ -9,7 +9,7 @@ import {
     Mail, Clock, FileText, Linkedin, Briefcase, BookOpen,
     GraduationCap, Code, FileCheck, BarChart3, PenTool,
     Youtube, Rocket, ShoppingCart, Target, Plane,
-    CheckSquare, Twitter,
+    CheckSquare, Twitter, Copy, Check, MessageSquare
 } from "lucide-react";
 
 const iconMap = {
@@ -17,6 +17,28 @@ const iconMap = {
     GraduationCap, Code, FileCheck, BarChart3, PenTool,
     Youtube, Rocket, Send: SendIcon, ShoppingCart, Target, Plane,
     User: UserIcon, CheckSquare, Twitter,
+};
+
+const CodeBlock = ({ children }) => {
+    const [copied, setCopied] = useState(false);
+    const code = String(children).replace(/\n$/, "");
+
+    const handleCopy = () => {
+        navigator.clipboard.writeText(code);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    return (
+        <div className="code-block-container">
+            <button className="copy-button" onClick={handleCopy} title="Copy code">
+                {copied ? <Check size={14} /> : <Copy size={14} />}
+            </button>
+            <pre>
+                <code>{children}</code>
+            </pre>
+        </div>
+    );
 };
 
 export default function ChatPage() {
@@ -44,7 +66,7 @@ export default function ChatPage() {
                 loadConversation(entry.messages, entry.runId);
             }
         }
-    }, [searchParams, loadConversation]);
+    }, [searchParams, loadConversation, agentId]);
 
     useEffect(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -52,15 +74,16 @@ export default function ChatPage() {
 
     useEffect(() => {
         inputRef.current?.focus();
-    }, []);
+    }, [agentId]);
 
     if (!agent) {
         return (
-            <div className="chat-page">
+            <div className="chat-page" style={{ justifyContent: 'center', alignItems: 'center' }}>
                 <div className="chat-not-found">
-                    <h2>Agent not found</h2>
+                    <MessageSquare size={48} style={{ opacity: 0.2, marginBottom: '1rem' }} />
+                    <h2>Agent ID mismatch in registry</h2>
                     <button onClick={() => navigate("/")} className="btn-primary">
-                        Go Home
+                        Return to Command Center
                     </button>
                 </div>
             </div>
@@ -78,26 +101,29 @@ export default function ChatPage() {
     const Icon = iconMap[agent.icon] || Sparkles;
 
     return (
-        <div className="chat-page">
+        <div className="chat-page-container fade-in">
             <div className="chat-header">
                 <button onClick={() => navigate("/")} className="back-btn">
-                    <ArrowLeft size={20} />
-                    <span>Home</span>
+                    <ArrowLeft size={18} />
+                    <span>Hub</span>
                 </button>
                 <div className="chat-agent-info">
                     <div
                         className="chat-agent-icon"
-                        style={{ background: `${agent.color}20`, color: agent.color }}
+                        style={{ background: `${agent.color}15`, color: agent.color, border: `1px solid ${agent.color}40` }}
                     >
-                        <Icon size={20} />
+                        <Icon size={18} />
                     </div>
                     <div>
                         <h2 className="chat-agent-name">{agent.name}</h2>
-                        <span className="chat-agent-category">{agent.category}</span>
+                        <div className="chat-agent-status">
+                            <span className="status-dot pulsed"></span>
+                            <span>ENTITY_ONLINE</span>
+                        </div>
                     </div>
                 </div>
-                <button onClick={clearChat} className="clear-btn" title="Clear chat">
-                    <Trash2 size={18} />
+                <button onClick={clearChat} className="clear-btn" title="Clear buffer">
+                    <Trash2 size={16} />
                 </button>
             </div>
 
@@ -106,20 +132,22 @@ export default function ChatPage() {
                     <div className="chat-welcome">
                         <div
                             className="welcome-icon"
-                            style={{ background: `${agent.color}15`, color: agent.color }}
+                            style={{ background: `${agent.color}10`, color: agent.color, border: `1px solid ${agent.color}30` }}
                         >
-                            <Icon size={48} />
+                            <Icon size={40} />
                         </div>
-                        <h2>{agent.name}</h2>
-                        <p>{agent.description}</p>
-                        <div className="welcome-hints">
-                            <p className="hints-label">How this agent works:</p>
-                            <ul>
-                                <li>Type your message below and press Send</li>
-                                <li>The agent streams its response in real-time</li>
-                                <li>Continue the conversation for follow-up questions</li>
-                                <li>Your chat history is saved automatically</li>
-                            </ul>
+                        <h2>{agent.name} Initialized</h2>
+                        <p className="welcome-desc">{agent.description}</p>
+
+                        <div className="welcome-suggestions">
+                            <span className="suggestions-label">RECOMMENDED QUERIES:</span>
+                            <div className="suggestions-grid-welcome">
+                                {agent.suggestions?.map((s, i) => (
+                                    <button key={i} className="suggestion-chip" onClick={() => sendMessage(s)}>
+                                        {s}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 )}
@@ -128,14 +156,25 @@ export default function ChatPage() {
                     <div key={i} className={`chat-bubble ${msg.role}`}>
                         <div className="bubble-avatar">
                             {msg.role === "user" ? (
-                                <UserIcon size={18} />
+                                <UserIcon size={16} />
                             ) : (
-                                <Bot size={18} />
+                                <Bot size={16} />
                             )}
                         </div>
                         <div className="bubble-content">
                             {msg.role === "assistant" ? (
-                                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                <ReactMarkdown
+                                    remarkPlugins={[remarkGfm]}
+                                    components={{
+                                        code: ({ node, inline, className, children, ...props }) => {
+                                            return !inline ? (
+                                                <CodeBlock {...props}>{children}</CodeBlock>
+                                            ) : (
+                                                <code className={className} {...props}>{children}</code>
+                                            )
+                                        }
+                                    }}
+                                >
                                     {msg.content || "..."}
                                 </ReactMarkdown>
                             ) : (
@@ -147,35 +186,50 @@ export default function ChatPage() {
 
                 {isLoading && messages[messages.length - 1]?.content === "" && (
                     <div className="chat-loading">
-                        <Loader2 size={20} className="spin" />
-                        <span>Agent is thinking...</span>
+                        <div className="typing-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span>PROCESSING QUEUE...</span>
                     </div>
                 )}
 
                 <div ref={messagesEndRef} />
             </div>
 
-            <form className="chat-input-form" onSubmit={handleSubmit}>
-                <div className="chat-input-wrapper">
-                    <input
-                        ref={inputRef}
-                        type="text"
-                        value={input}
-                        onChange={(e) => setInput(e.target.value)}
-                        placeholder={`Message ${agent.name}...`}
-                        disabled={isLoading}
-                        className="chat-input"
-                    />
-                    <button
-                        type="submit"
-                        disabled={!input.trim() || isLoading}
-                        className="send-btn"
-                        style={{ background: input.trim() && !isLoading ? agent.color : undefined }}
-                    >
-                        {isLoading ? <Loader2 size={18} className="spin" /> : <SendIcon size={18} />}
-                    </button>
-                </div>
-            </form>
+            <div className="chat-footer">
+                {messages.length > 0 && agent.suggestions && !isLoading && (
+                    <div className="suggestions-bar">
+                        {agent.suggestions.slice(0, 3).map((s, i) => (
+                            <button key={i} className="suggestion-chip-small" onClick={() => sendMessage(s)}>
+                                {s}
+                            </button>
+                        ))}
+                    </div>
+                )}
+
+                <form className="chat-input-form" onSubmit={handleSubmit}>
+                    <div className="input-wrapper">
+                        <input
+                            ref={inputRef}
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            placeholder={`Communicate with ${agent.name}...`}
+                            disabled={isLoading}
+                            className="chat-input"
+                        />
+                        <button
+                            type="submit"
+                            disabled={!input.trim() || isLoading}
+                            className="send-button"
+                        >
+                            {isLoading ? <Loader2 size={18} className="spin" /> : <SendIcon size={18} />}
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 }

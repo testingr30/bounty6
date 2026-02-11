@@ -7,6 +7,12 @@ export const agents = [
     category: "Productivity",
     icon: "Mail",
     color: "#4285F4",
+    featured: true,
+    suggestions: [
+      "List my recent files from Google Drive",
+      "Create a new spreadsheet for monthly expenses",
+      "Draft an email to the marketing team about the update",
+    ],
   },
   {
     id: "lou-on-time-reminder",
@@ -16,6 +22,11 @@ export const agents = [
     category: "Productivity",
     icon: "Clock",
     color: "#FF6B6B",
+    suggestions: [
+      "Set a reminder for my meeting tomorrow at 10 AM",
+      "Remind me to buy groceries after work",
+      "Check my reminders for today",
+    ],
   },
   {
     id: "pdf-reader-screenshot-summary",
@@ -25,6 +36,12 @@ export const agents = [
     category: "Productivity",
     icon: "FileText",
     color: "#A855F7",
+    featured: true,
+    suggestions: [
+      "Summarize the PDF I just uploaded",
+      "Extract the key findings from this paper",
+      "Explain the main argument of this document in 3 bullet points",
+    ],
   },
   {
     id: "linkedin-content-agent",
@@ -34,6 +51,11 @@ export const agents = [
     category: "Content Creation",
     icon: "Linkedin",
     color: "#0A66C2",
+    suggestions: [
+      "Write a post about my new job at Toolhouse",
+      "Generate a post about emerging AI trends",
+      "Create a story-driven post about a professional challenge I overcame",
+    ],
   },
   {
     id: "resume-job-email-optimizer",
@@ -43,6 +65,12 @@ export const agents = [
     category: "Career",
     icon: "Briefcase",
     color: "#10B981",
+    featured: true,
+    suggestions: [
+      "Improve my resume summary for a software engineer role",
+      "Draft a follow-up email after a job interview",
+      "Analyze my resume for ATS compatibility",
+    ],
   },
   {
     id: "ai-research-summarizer",
@@ -52,6 +80,11 @@ export const agents = [
     category: "Education",
     icon: "BookOpen",
     color: "#F59E0B",
+    suggestions: [
+      "Summarize this research paper: [Link]",
+      "What is the methodology used in this study?",
+      "List the most important takeaways from this article",
+    ],
   },
   {
     id: "scholarship-grant-finder",
@@ -61,6 +94,11 @@ export const agents = [
     category: "Education",
     icon: "GraduationCap",
     color: "#6366F1",
+    suggestions: [
+      "Find scholarships for computer science majors in Europe",
+      "List grant opportunities for low-income graduate students",
+      "Check for scholarships with a deadline in the next month",
+    ],
   },
   {
     id: "explain-code-juniors",
@@ -70,6 +108,11 @@ export const agents = [
     category: "Education",
     icon: "Code",
     color: "#EC4899",
+    suggestions: [
+      "Explain this React useEffect hook in simple terms",
+      "Break down this recursive function for a beginner",
+      "What does this complex SQL query do?",
+    ],
   },
   {
     id: "client-proposal-generator",
@@ -79,6 +122,11 @@ export const agents = [
     category: "Business",
     icon: "FileCheck",
     color: "#14B8A6",
+    suggestions: [
+      "Create a proposal for a web development project",
+      "Draft a scope of work for a social media marketing campaign",
+      "Generate a pricing breakdown for a consulting contract",
+    ],
   },
   {
     id: "teacher-assistant",
@@ -88,6 +136,11 @@ export const agents = [
     category: "Education",
     icon: "GraduationCap",
     color: "#8B5CF6",
+    suggestions: [
+      "Generate a 10-question quiz on cellular biology",
+      "Create a lesson plan for a 1-hour session on introductory algebra",
+      "Draft a feedback report for a student's history essay",
+    ],
   },
   {
     id: "data-structured-insights",
@@ -97,6 +150,12 @@ export const agents = [
     category: "Business",
     icon: "BarChart3",
     color: "#06B6D4",
+    featured: true,
+    suggestions: [
+      "Analyze these sales numbers and find the main trends",
+      "What are the top-performing products in this dataset?",
+      "Create a structured report from this CSV data",
+    ],
   },
   {
     id: "exam-answer-structuring",
@@ -106,6 +165,11 @@ export const agents = [
     category: "Education",
     icon: "PenTool",
     color: "#F43F5E",
+    suggestions: [
+      "How should I structure an answer to a 20-mark history question?",
+      "Provide a model outline for a law exam response",
+      "List key points to include in a comparative literature essay",
+    ],
   },
   {
     id: "youtube-script-polisher",
@@ -115,6 +179,11 @@ export const agents = [
     category: "Content Creation",
     icon: "Youtube",
     color: "#FF0000",
+    suggestions: [
+      "Polish this script about the best laptops of 2024",
+      "Add a compelling hook to my video about cooking",
+      "Structure this 10-minute video for maximum audience retention",
+    ],
   },
   {
     id: "startup-plan-generator",
@@ -124,6 +193,12 @@ export const agents = [
     category: "Business",
     icon: "Rocket",
     color: "#F97316",
+    featured: true,
+    suggestions: [
+      "Create a business model canvas for a subscription snack box",
+      "Draft an MVP roadmap for a local services app",
+      "What should I include in my pitch deck about an AI startup?",
+    ],
   },
   {
     id: "cold-dm-gmail-sender",
@@ -133,6 +208,11 @@ export const agents = [
     category: "Business",
     icon: "Send",
     color: "#EF4444",
+    suggestions: [
+      "Generate 3 versions of a cold outreach email for a potential partner",
+      "Create a follow-up DM for a LinkedIn connection I just made",
+      "Draft a personalized intro email for a sales lead",
+    ],
   },
   {
     id: "ecommerce-description-optimizer",
@@ -142,6 +222,11 @@ export const agents = [
     category: "Business",
     icon: "ShoppingCart",
     color: "#84CC16",
+    suggestions: [
+      "Optimize this description for a portable rechargeable fan",
+      "Write a catchy product title for organic dog treats",
+      "Generate 5 high-converting bullet points for a wireless charger",
+    ],
   },
   {
     id: "goals-weekly-plan",
@@ -151,6 +236,11 @@ export const agents = [
     category: "Personal",
     icon: "Target",
     color: "#22D3EE",
+    suggestions: [
+      "Break down my goal of writing a book into a weekly plan",
+      "Create a schedule for training for a half-marathon in 4 months",
+      "How can I better manage my week to spend more time on my hobby?",
+    ],
   },
   {
     id: "visa-application-helper",
@@ -160,6 +250,11 @@ export const agents = [
     category: "Personal",
     icon: "Plane",
     color: "#2DD4BF",
+    suggestions: [
+      "What documents do I need for a Schengen visa for Germany?",
+      "Provide tips for a US visitor visa interview",
+      "Check the visa requirements for digital nomads in Portugal",
+    ],
   },
   {
     id: "personality-mirror",
@@ -169,6 +264,11 @@ export const agents = [
     category: "Personal",
     icon: "User",
     color: "#D946EF",
+    suggestions: [
+      "Analyze my recent chat messages to identify my personality traits",
+      "What are the main communication strengths based on our interaction?",
+      "How can I improve my collaboration style based on my personality?",
+    ],
   },
   {
     id: "task-reminder-manager",
@@ -178,6 +278,12 @@ export const agents = [
     category: "Productivity",
     icon: "CheckSquare",
     color: "#0EA5E9",
+    featured: true,
+    suggestions: [
+      "List my tasks for today",
+      "Remind me to call the dentist next Tuesday at 2 PM",
+      "Create a new task for my project research",
+    ],
   },
   {
     id: "twitter-ai-coding-trends",
@@ -187,6 +293,11 @@ export const agents = [
     category: "Content Creation",
     icon: "Twitter",
     color: "#1DA1F2",
+    suggestions: [
+      "What are the trending topics in AI on Twitter today?",
+      "Summarize the recent community discussion about the new React release",
+      "Find the most influential tweets about coder productivity tools",
+    ],
   },
 ];
 
