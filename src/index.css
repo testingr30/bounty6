@@ -730,15 +730,15 @@ body {
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
-  max-width: 900px;
+  gap: 2rem;
+  max-width: 1150px;
   width: 100%;
   margin: 0 auto;
   scrollbar-gutter: stable;
 }
 
 .chat-bubble {
-  max-width: 90%;
+  max-width: 92%;
   display: flex;
   gap: 1.25rem;
   animation: slideInUp 0.3s ease-out;
@@ -747,7 +747,7 @@ body {
 @keyframes slideInUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(5px);
   }
 
   to {
@@ -892,7 +892,7 @@ body {
 /* Chat Footer & Input */
 .chat-footer {
   padding: 1rem 2rem 2.5rem;
-  max-width: 900px;
+  max-width: 1150px;
   width: 100%;
   margin: 0 auto;
 }
