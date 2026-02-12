@@ -125,7 +125,9 @@ export default function Layout() {
                                         to={`/chat/${chat.agentId}?historyId=${chat.id}`}
                                         className={({ isActive }) => `recent-chat-link ${isActive ? "active" : ""}`}
                                     >
-                                        <MessageSquare size={14} />
+                                        <div className="recent-chat-icon-shell" style={{ color: agents.find(a => a.id === chat.agentId)?.color || 'var(--accent-cyan)' }}>
+                                            <MessageSquare size={14} />
+                                        </div>
                                         <span className="recent-chat-agent">{chat.agentName}</span>
                                     </NavLink>
                                 ))

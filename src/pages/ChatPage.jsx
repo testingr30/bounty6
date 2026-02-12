@@ -100,8 +100,14 @@ export default function ChatPage() {
 
     const Icon = iconMap[agent.icon] || Sparkles;
 
+    const dynamicStyles = {
+        '--agent-color': agent.color,
+        '--agent-color-alpha': `${agent.color}40`,
+        '--agent-color-glow': `${agent.color}20`,
+    };
+
     return (
-        <div className="chat-page-container fade-in">
+        <div className="chat-page-container fade-in" style={dynamicStyles}>
             <div className="chat-header">
                 <button onClick={() => navigate("/")} className="back-btn">
                     <ArrowLeft size={18} />
@@ -132,19 +138,26 @@ export default function ChatPage() {
                     <div className="chat-welcome">
                         <div
                             className="welcome-icon"
-                            style={{ background: `${agent.color}10`, color: agent.color, border: `1px solid ${agent.color}30` }}
+                            style={{ background: `${agent.color}15`, color: agent.color, border: `1px solid ${agent.color}40` }}
                         >
-                            <Icon size={40} />
+                            <Icon size={48} />
                         </div>
-                        <h2>{agent.name} Initialized</h2>
+                        <h2 className="chat-agent-name" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{agent.name}</h2>
+                        <div className="chat-agent-status" style={{ marginBottom: '1.5rem', justifyContent: 'center' }}>
+                            <span className="status-dot pulsed"></span>
+                            <span>READY_FOR_COMMUNICATION</span>
+                        </div>
                         <p className="welcome-desc">{agent.description}</p>
 
-                        <div className="welcome-suggestions">
-                            <span className="suggestions-label">RECOMMENDED QUERIES:</span>
+                        <div className="welcome-suggestions" style={{ marginTop: '3rem' }}>
+                            <span className="suggestions-label">INITIALIZATION QUERIES</span>
                             <div className="suggestions-grid-welcome">
                                 {agent.suggestions?.map((s, i) => (
                                     <button key={i} className="suggestion-chip" onClick={() => sendMessage(s)}>
-                                        {s}
+                                        <div className="suggestion-icon" style={{ color: agent.color, marginRight: '1rem', opacity: 0.7 }}>
+                                            <Sparkles size={18} />
+                                        </div>
+                                        <span>{s}</span>
                                     </button>
                                 ))}
                             </div>
@@ -156,30 +169,35 @@ export default function ChatPage() {
                     <div key={i} className={`chat-bubble ${msg.role}`}>
                         <div className="bubble-avatar">
                             {msg.role === "user" ? (
-                                <UserIcon size={16} />
+                                <UserIcon size={18} />
                             ) : (
-                                <Bot size={16} />
+                                <Icon size={18} style={{ color: agent.color }} />
                             )}
                         </div>
                         <div className="bubble-content">
                             {msg.role === "assistant" ? (
-                                <ReactMarkdown
-                                    remarkPlugins={[remarkGfm]}
-                                    components={{
-                                        code: ({ node, inline, className, children, ...props }) => {
-                                            return !inline ? (
-                                                <CodeBlock {...props}>{children}</CodeBlock>
-                                            ) : (
-                                                <code className={className} {...props}>{children}</code>
-                                            )
-                                        }
-                                    }}
-                                >
-                                    {msg.content || "..."}
-                                </ReactMarkdown>
+                                <div className="assistant-markdown-content">
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{
+                                            code: ({ node, inline, className, children, ...props }) => {
+                                                return !inline ? (
+                                                    <CodeBlock {...props}>{children}</CodeBlock>
+                                                ) : (
+                                                    <code className={className} style={{ background: `${agent.color}15`, color: agent.color, padding: '0.2rem 0.4rem', borderRadius: '4px' }} {...props}>{children}</code>
+                                                )
+                                            }
+                                        }}
+                                    >
+                                        {msg.content || "..."}
+                                    </ReactMarkdown>
+                                </div>
                             ) : (
                                 <p>{msg.content}</p>
                             )}
+                            <div className="bubble-timestamp" style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '0.5rem', textAlign: msg.role === 'user' ? 'right' : 'left', opacity: 0.5 }}>
+                                {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            </div>
                         </div>
                     </div>
                 ))}
