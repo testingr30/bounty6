@@ -2,6 +2,7 @@ import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { Home, History, Sparkles, Menu, X, MessageSquare, Clock, Plus } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { getChatHistory } from "../hooks/useChat";
+import { agents } from "../data/agents";
 import { playHoverSound, playClickSound } from "../utils/audio";
 
 export default function Layout() {
