@@ -455,7 +455,7 @@ export const agents = [
   },
   {
     id: "etl-automator",
-    name: "Universal Data Ingestion & ETL Automator",
+    name: "DataFlow ETL",
     description: "Streamline your data workflows with automated ingestion and ETL processes. Connect disparate data sources and transform raw data into usable formats.",
     endpoint: "https://agents.toolhouse.ai/01c9be60-70d0-422d-94f9-873afe160f1b",
     category: "Business",
@@ -469,7 +469,7 @@ export const agents = [
   },
   {
     id: "stockout-shield",
-    name: "Revenue Stockout Shield",
+    name: "StockGuard",
     description: "Protect your revenue by preventing stockouts. Get real-time inventory alerts, demand forecasting, and smart reordering recommendations.",
     endpoint: "https://agents.toolhouse.ai/4f4e6f46-6040-46a3-882a-a649039c2c72",
     category: "Business",
@@ -483,7 +483,7 @@ export const agents = [
   },
   {
     id: "contract-reviewer",
-    name: "Contract Risk First Pass Reviewer Pro",
+    name: "ContractRisk AI",
     description: "Identify potential risks in legal contracts instantly. Get automated flags for liability, compliance, and unfavorable terms before legal review.",
     endpoint: "https://agents.toolhouse.ai/597b0df1-cbec-4f17-888d-6cbba3ecc49b",
     category: "Business",
@@ -497,7 +497,7 @@ export const agents = [
   },
   {
     id: "vendor-negotiator",
-    name: "Vendor Procurement Negotiator",
+    name: "ProcureNegotiator",
     description: "Optimize your procurement process and negotiate better deals with vendors. Get market price benchmarks and data-driven negotiation strategies.",
     endpoint: "https://agents.toolhouse.ai/e909eba3-f8b7-429f-a639-a0cbe616f53a",
     category: "Business",
@@ -511,7 +511,7 @@ export const agents = [
   },
   {
     id: "inbox-triage",
-    name: "Inbox Triage Officer",
+    name: "InboxTriage",
     description: "Master your email with AI-powered triage. Automatically categorize, prioritize, and summarize incoming messages for maximum efficiency.",
     endpoint: "https://agents.toolhouse.ai/91257f77-177b-46db-a2fb-02cf87f705e4",
     category: "Productivity",
@@ -525,7 +525,7 @@ export const agents = [
   },
   {
     id: "competitor-watchtower",
-    name: "Competitor Watchtower",
+    name: "MarketWatch",
     description: "Stay ahead of the competition with real-time market monitoring. Tracks competitor updates, pricing changes, and new feature launches automatically.",
     endpoint: "https://agents.toolhouse.ai/306fb7ff-e623-4743-b940-d4a4fbdfad9e",
     category: "Business",
@@ -539,7 +539,7 @@ export const agents = [
   },
   {
     id: "ghost-tpm",
-    name: "The Ghost TPM",
+    name: "GhostTPM",
     description: "Your invisible Technical Program Manager. Manages timelines, unblocks engineering teams, and ensures technical projects stay on track.",
     endpoint: "https://agents.toolhouse.ai/63cb6269-cdd2-4cce-8d3b-279365692997",
     category: "Productivity",
@@ -553,7 +553,7 @@ export const agents = [
   },
   {
     id: "content-remix",
-    name: "Hero Content Remix Engine",
+    name: "ContentRemix",
     description: "Transform one piece of long-form content into dozens of social media posts, newsletters, and clips. Multiply your content output effortlessly.",
     endpoint: "https://agents.toolhouse.ai/c4b066ff-ac66-4b30-841a-96dedd814cd4",
     category: "Content Creation",
@@ -567,7 +567,7 @@ export const agents = [
   },
   {
     id: "cognitive-audit",
-    name: "Cognitive Audit Engine",
+    name: "CogniAudit",
     description: "Audit your business processes for cognitive load and efficiency. Identify areas where AI can automate complex decision-making tasks.",
     endpoint: "https://agents.toolhouse.ai/7e35cab2-4367-4ae0-bc91-8c219c79aff2",
     category: "Business",
@@ -581,7 +581,7 @@ export const agents = [
   },
   {
     id: "holiday-helper",
-    name: "Holiday Helper",
+    name: "HolidayHelper",
     description: "Your personal gift and celebration assistant. Find perfect presents, plan themed parties, and manage your holiday schedule stress-free.",
     endpoint: "https://agents.toolhouse.ai/2c4ad2d1-8d23-41ff-93ba-6b5152f224ca",
     category: "Personal",
@@ -609,7 +609,7 @@ export const agents = [
   },
   {
     id: "grant-hunter-pro",
-    name: "Elite AI Grant & Scholarship Hunter Pro",
+    name: "GrantScholar",
     description: "Expert level funding discovery. Finds niche grants, high-value scholarships, and complex funding opportunities specific to your profile.",
     endpoint: "https://agents.toolhouse.ai/fa4b8932-1eac-481d-a739-1e9341dbf0b1",
     category: "Education",
@@ -623,7 +623,7 @@ export const agents = [
   },
   {
     id: "reel-growth",
-    name: "Viral Reel Growth Strategist AI",
+    name: "ViralReel AI",
     description: "Master Short-form video. Get viral hooks, trending audio recommendations, and script structures optimized for Reels, TikTok, and Shorts.",
     endpoint: "https://agents.toolhouse.ai/0285872c-41dc-49ac-a64c-8f096bfd3725",
     category: "Content Creation",
@@ -636,22 +636,8 @@ export const agents = [
     ],
   },
   {
-    id: "legal-protection-india",
-    name: "AI Legal Protection Pro – India",
-    description: "Specialized legal guidance for the Indian market. Understand local laws, draft basic legal documents, and get compliance checks for Indian regulations.",
-    endpoint: "https://agents.toolhouse.ai/43e824f1-5bf8-41b2-85d4-4f98736e210b",
-    category: "Personal",
-    icon: "Gavel",
-    color: "#34D399",
-    suggestions: [
-      "What are the basic rights under the Consumer Protection Act in India?",
-      "Draft a simple rental agreement for an apartment in Mumbai",
-      "Check the GST compliance requirements for a small business",
-    ],
-  },
-  {
     id: "startup-validation",
-    name: "AI Startup Validation Analyst Pro",
+    name: "StartupValidation",
     description: "Validate your startup idea before you build. Get market sizing (TAM/SAM/SOM), target audience analysis, and objective risk assessments.",
     endpoint: "https://agents.toolhouse.ai/02a45225-1b31-4ad5-990f-4add44559bd1",
     category: "Business",
@@ -665,7 +651,7 @@ export const agents = [
   },
   {
     id: "sales-intelligence",
-    name: "Elite AI Sales Performance & Revenue Intelligence Analyst",
+    name: "SalesPerformance AI",
     description: "Transform your sales data into revenue. Analyze pipeline health, predict churn, and identify high-value opportunities for closing deals faster.",
     endpoint: "https://agents.toolhouse.ai/e86663d5-3a14-476b-8083-ca91e60618f0",
     category: "Business",
@@ -679,7 +665,7 @@ export const agents = [
   },
   {
     id: "career-auto-apply",
-    name: "Elite AI Career Optimization & Intelligent Auto-Apply Assistant",
+    name: "CareerOptimize",
     description: "Automate your job search. Optimize your profile for specific roles and intelligently manage your applications across multiple platforms.",
     endpoint: "https://agents.toolhouse.ai/4a623428-abb2-4cf0-b237-c7bcf0731981",
     category: "Career",
@@ -693,7 +679,7 @@ export const agents = [
   },
   {
     id: "market-readiness",
-    name: "Market Readiness & Skill Intelligence Agent",
+    name: "SkillSync",
     description: "Assess your professional value and market readiness. Identify skill gaps and get personalized recommendations for learning to boost your career.",
     endpoint: "https://agents.toolhouse.ai/a680d6c0-d413-4171-ac77-f726394d5dc4",
     category: "Career",
