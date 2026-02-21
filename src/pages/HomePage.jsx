@@ -6,14 +6,14 @@ import {
     GraduationCap, Code, FileCheck, BarChart3, PenTool,
     Youtube, Rocket, Send, ShoppingCart, Target, Plane,
     User, CheckSquare, Twitter, Sparkles, Search, ArrowRight,
-    Zap, Star, TrendingUp, Activity
+    Zap, Star, TrendingUp, Activity, Github, Scissors, Key, Flag, Layout
 } from "lucide-react";
 
 const iconMap = {
     Mail, Clock, FileText, Linkedin, Briefcase, BookOpen,
     GraduationCap, Code, FileCheck, BarChart3, PenTool,
     Youtube, Rocket, Send, ShoppingCart, Target, Plane,
-    User, CheckSquare, Twitter,
+    User, CheckSquare, Twitter, Github, Scissors, Key, Flag, Layout
 };
 
 export default function HomePage() {

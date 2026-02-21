@@ -9,14 +9,15 @@ import {
     Mail, Clock, FileText, Linkedin, Briefcase, BookOpen,
     GraduationCap, Code, FileCheck, BarChart3, PenTool,
     Youtube, Rocket, ShoppingCart, Target, Plane,
-    CheckSquare, Twitter, Copy, Check, MessageSquare
+    CheckSquare, Twitter, Copy, Check, MessageSquare,
+    Github, Scissors, Key, Flag, Layout
 } from "lucide-react";
 
 const iconMap = {
     Mail, Clock, FileText, Linkedin, Briefcase, BookOpen,
     GraduationCap, Code, FileCheck, BarChart3, PenTool,
     Youtube, Rocket, Send: SendIcon, ShoppingCart, Target, Plane,
-    User: UserIcon, CheckSquare, Twitter,
+    User: UserIcon, CheckSquare, Twitter, Github, Scissors, Key, Flag, Layout
 };
 
 const CodeBlock = ({ children }) => {
